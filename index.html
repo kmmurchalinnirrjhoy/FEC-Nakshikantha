@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+
+<title>FEC Nakshikantha</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #18212f;
+}
+
+.container {
+  width: min(94%, 650px);
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+.hero {
+  background: #111827;
+  color: white;
+  padding: 28px 18px 32px;
+  border-radius: 0 0 26px 26px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.subtitle {
+  color: #cbd5e1;
+  margin: 7px 0 18px;
+  font-size: 14px;
+}
+
+.route {
+  font-weight: bold;
+  margin: 12px 0 22px;
+}
+
+.trip-label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+}
+
+.trip-date {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.total-number {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.total-label {
+  font-size: 12px;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.stat {
+  background: rgba(255,255,255,.08);
+  padding: 12px 22px;
+  border-radius: 14px;
+  min-width: 120px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-btn {
+  width: 100%;
+  max-width: 330px;
+  padding: 14px;
+  border-radius: 12px;
+  background: white;
+  color: #111827;
+  font-size: 15px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  margin: 15px 0;
+  box-shadow: 0 3px 15px rgba(0,0,0,.06);
+}
+
+.section-title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.gender-title {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-top: 15px;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.person:last-child {
+  border-bottom: 0;
+}
+
+.serial {
+  width: 36px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.person-main {
+  flex: 1;
+}
+
+.person-name {
+  font-weight: bold;
+}
+
+.person-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.status-box {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.status-box:last-child {
+  border-bottom: 0;
+}
+
+.status-name {
+  font-weight: bold;
+}
+
+.status-meta {
+  color: #64748b;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.green {
+  color: #16803a;
+}
+
+.orange {
+  color: #b66a00;
+}
+
+.empty {
+  color: #94a3b8;
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d7dce2;
+  border-radius: 10px;
+  background: white;
+  font-size: 15px;
+}
+
+.gender-options {
+  display: flex;
+  gap: 10px;
+}
+
+.gender-button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d7dce2;
+  background: white;
+  border-radius: 10px;
+}
+
+.gender-button.selected {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #edf2f7;
+  color: #111827;
+  margin-top: 8px;
+}
+
+.station-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  background: #15803d;
+  color: white;
+  margin-top: 12px;
+}
+
+.danger-btn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 10px;
+  background: #fff1f2;
+  color: #be123c;
+  margin-top: 8px;
+}
+
+.your-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #fff7ed;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.at-station-status {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  width: min(100%, 430px);
+  border-radius: 18px;
+  padding: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.cancel-link {
+  text-align: center;
+  margin-top: 13px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.confirm-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  padding: 15px;
+  line-height: 1.6;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+
+@media (min-width: 700px) {
+  .hero {
+    margin-top: 20px;
+    border-radius: 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <section class="hero">
+
+    <h1>🚆 Nakshikantha Commuter</h1>
+    <div class="subtitle">FEC Travel Coordination</div>
+
+    <div class="route">
+      Faridpur &nbsp; ─────→ &nbsp; Dhaka
+    </div>
+
+    <div class="trip-label">UPCOMING TRIP</div>
+    <div class="trip-date" id="tripDate">Loading...</div>
+
+    <div class="total-number" id="totalCount">0</div>
+    <div class="total-label">TOTAL GOING</div>
+
+    <div class="stats">
+
+      <div class="stat">
+        👨
+        <span class="stat-number" id="maleCount">0</span>
+        <span class="stat-label">Male</span>
+      </div>
+
+      <div class="stat">
+        👩
+        <span class="stat-number" id="femaleCount">0</span>
+        <span class="stat-label">Female</span>
+      </div>
+
+    </div>
+
+    <button
+      class="primary-btn"
+      id="joinButton"
+      onclick="openJoinModal()">
+      + I'M GOING TOO
+    </button>
+
+  </section>
+
+
+  <!-- YOUR TRIP -->
+
+  <section class="card hidden" id="yourTripCard">
+
+    <div class="section-title">👤 YOUR TRIP</div>
+
+    <div id="yourTripInfo"></div>
+
+    <button
+      class="station-btn"
+      id="stationButton"
+      onclick="toggleStationStatus()">
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="openEditModal()">
+      ✏️ Edit
+    </button>
+
+    <button
+      class="danger-btn"
+      onclick="openCancelModal()">
+      ❌ Cancel Trip
+    </button>
+
+  </section>
+
+
+  <!-- PASSENGERS -->
+
+  <section class="card">
+
+    <div class="section-title">
+      👥 PASSENGER LIST
+    </div>
+
+    <div class="gender-title">
+      <span>👨 MALE</span>
+      <span id="maleListCount">0</span>
+    </div>
+
+    <div id="maleList"></div>
+
+
+    <div class="gender-title">
+      <span>👩 FEMALE</span>
+      <span id="femaleListCount">0</span>
+    </div>
+
+    <div id="femaleList"></div>
+
+  </section>
+
+
+  <!-- STATION STATUS -->
+
+  <section class="card">
+
+    <div class="section-title">
+      📍 STATION STATUS
+    </div>
+
+    <div class="gender-title">
+      <span class="green">🟢 AT STATION</span>
+      <span id="stationCount">0</span>
+    </div>
+
+    <div id="stationList"></div>
+
+
+    <div class="gender-title">
+      <span class="orange">🟡 COMING</span>
+      <span id="comingCount">0</span>
+    </div>
+
+    <div id="comingList"></div>
+
+  </section>
+
+
+  <div class="footer">
+
+    ℹ️ This website is for FEC student coordination only.<br>
+
+    It does not reserve a railway ticket, seat or queue position.
+
+    <br><br>
+
+    <span id="lastUpdated"></span>
+
+  </div>
+
+</div>
+
+
+<!-- JOIN / EDIT MODAL -->
+
+<div class="modal hidden" id="formModal">
+
+  <div class="modal-content">
+
+    <div class="modal-title" id="formTitle">
+      Join Tomorrow's Trip
+    </div>
+
+    <div class="form-group">
+
+      <label>Name (Optional)</label>
+
+      <input
+        type="text"
+        id="nameInput"
+        maxlength="50"
+        placeholder="Your name">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Batch *</label>
+
+      <select id="batchInput">
+
+        <option value="">Select Batch</option>
+        <option value="9">Batch 9</option>
+        <option value="10">Batch 10</option>
+        <option value="11">Batch 11</option>
+        <option value="12">Batch 12</option>
+        <option value="13">Batch 13</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Gender *</label>
+
+      <div class="gender-options">
+
+        <button
+          type="button"
+          class="gender-button"
+          id="maleButton"
+          onclick="selectGender('male')">
+          👨 Male
+        </button>
+
+        <button
+          type="button"
+          class="gender-button"
+          id="femaleButton"
+          onclick="selectGender('female')">
+          👩 Female
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Expected Arrival (Optional)</label>
+
+      <select id="arrivalInput">
+
+        <option value="">Not Sure</option>
+
+        <option value="5:00 AM">5:00 AM</option>
+        <option value="5:15 AM">5:15 AM</option>
+        <option value="5:30 AM">5:30 AM</option>
+        <option value="5:45 AM">5:45 AM</option>
+
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:15 AM">6:15 AM</option>
+        <option value="6:30 AM">6:30 AM</option>
+        <option value="6:45 AM">6:45 AM</option>
+
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:15 AM">7:15 AM</option>
+        <option value="7:30 AM">7:30 AM</option>
+
+      </select>
+
+    </div>
+
+
+    <button
+      class="submit-btn"
+      id="formSubmitButton"
+      onclick="saveTrip()">
+      ✓ CONFIRM TRIP
+    </button>
+
+    <div
+      class="cancel-link"
+      onclick="closeFormModal()">
+      Close
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CANCEL MODAL -->
+
+<div class="modal hidden" id="cancelModal">
+
+  <div class="modal-content">
+
+    <div class="modal-title">
+      Cancel your trip?
+    </div>
+
+    <p>
+      Are you sure you are no longer going on this trip?
+    </p>
+
+    <div class="confirm-actions">
+
+      <button
+        onclick="closeCancelModal()">
+        Keep Trip
+      </button>
+
+      <button
+        style="background:#be123c;color:white"
+        onclick="confirmCancel()">
+        Yes, Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+import {
+  getDatabase,
+  ref,
+  set,
+  remove,
+  onValue,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyATBd9cgH0P6zsYKCeeb7zlXbnJhn7laBI",
+
+  authDomain:
+    "fec-nakshikantha.firebaseapp.com",
+
+  databaseURL:
+    "https://fec-nakshikantha-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+  projectId:
+    "fec-nakshikantha",
+
+  storageBucket:
+    "fec-nakshikantha.firebasestorage.app",
+
+  messagingSenderId:
+    "297757234306",
+
+  appId:
+    "1:297757234306:web:b1e4b94da38cdf2ac4909b"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getDatabase(app);
+
+
+let currentUser = null;
+let currentTripId = null;
+let currentTripData = {};
+let myEntry = null;
+
+let selectedGender = "";
+let editing = false;
+
+
+/* ================================
+   BANGLADESH TRIP DATE
+================================ */
+
+function getBangladeshParts() {
+
+  const formatter =
+    new Intl.DateTimeFormat(
+      "en-CA",
+      {
+        timeZone: "Asia/Dhaka",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        hourCycle: "h23"
+      }
+    );
+
+  const parts =
+    formatter.formatToParts(new Date());
+
+  const result = {};
+
+  parts.forEach(part => {
+    result[part.type] = part.value;
+  });
+
+  return result;
+}
+
+
+function getTripDate() {
+
+  const p = getBangladeshParts();
+
+  const base =
+    new Date(
+      Date.UTC(
+        Number(p.year),
+        Number(p.month) - 1,
+        Number(p.day)
+      )
+    );
+
+  /*
+    Before 12 PM Bangladesh time:
+    show today's morning trip.
+
+    From 12 PM:
+    show tomorrow's morning trip.
+  */
+
+  if (Number(p.hour) >= 12) {
+    base.setUTCDate(base.getUTCDate() + 1);
+  }
+
+  return base;
+}
+
+
+function getTripId() {
+
+  const d = getTripDate();
+
+  return (
+    d.getUTCFullYear() +
+    "-" +
+    String(d.getUTCMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(d.getUTCDate()).padStart(2, "0")
+  );
+}
+
+
+function displayTripDate() {
+
+  const d = getTripDate();
+
+  document.getElementById("tripDate").textContent =
+    d.toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC"
+      }
+    );
+
+}
+
+
+/* ================================
+   AUTH
+================================ */
+
+signInAnonymously(auth)
+.catch(error => {
+
+  console.error(error);
+
+  alert(
+    "Could not connect. Please refresh the page."
+  );
+
+});
+
+
+onAuthStateChanged(auth, user => {
+
+  if (!user) return;
+
+  currentUser = user;
+
+  startApp();
+
+});
+
+
+/* ================================
+   START
+================================ */
+
+function startApp() {
+
+  currentTripId = getTripId();
+
+  displayTripDate();
+
+  listenToTrip();
+
+}
+
+
+/* ================================
+   LIVE DATABASE
+================================ */
+
+function listenToTrip() {
+
+  const tripRef =
+    ref(
+      db,
+      "trips/" + currentTripId
+    );
+
+  onValue(
+    tripRef,
+    snapshot => {
+
+      currentTripData =
+        snapshot.val() || {};
+
+      myEntry =
+        currentTripData[currentUser.uid] || null;
+
+      renderAll();
+
+    }
+  );
+
+}
+
+
+/* ================================
+   RENDER
+================================ */
+
+function renderAll() {
+
+  const entries =
+    Object.entries(currentTripData)
+      .map(([uid, data]) => ({
+        uid,
+        ...data
+      }))
+      .sort(
+        (a, b) =>
+          (a.createdAt || 0) -
+          (b.createdAt || 0)
+      );
+
+
+  const males =
+    entries.filter(
+      x => x.gender === "male"
+    );
+
+  const females =
+    entries.filter(
+      x => x.gender === "female"
+    );
+
+  const atStation =
+    entries.filter(
+      x => x.status === "at_station"
+    );
+
+  const coming =
+    entries.filter(
+      x => x.status !== "at_station"
+    );
+
+
+  document.getElementById("totalCount").textContent =
+    entries.length;
+
+  document.getElementById("maleCount").textContent =
+    males.length;
+
+  document.getElementById("femaleCount").textContent =
+    females.length;
+
+  document.getElementById("maleListCount").textContent =
+    males.length;
+
+  document.getElementById("femaleListCount").textContent =
+    females.length;
+
+  document.getElementById("stationCount").textContent =
+    atStation.length;
+
+  document.getElementById("comingCount").textContent =
+    coming.length;
+
+
+  renderPassengerList(
+    "maleList",
+    males
+  );
+
+  renderPassengerList(
+    "femaleList",
+    females
+  );
+
+  renderStationList(
+    "stationList",
+    atStation,
+    true
+  );
+
+  renderStationList(
+    "comingList",
+    coming,
+    false
+  );
+
+
+  renderMyTrip();
+
+
+  document.getElementById("lastUpdated").textContent =
+    "Last updated: " +
+    new Date().toLocaleTimeString(
+      "en-US",
+      {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: "Asia/Dhaka"
+      }
+    );
+
+}
+
+
+function safeText(value) {
+
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+function displayName(entry) {
+
+  const name =
+    (entry.name || "").trim();
+
+  return name
+    ? safeText(name)
+    : "Anonymous";
+
+}
+
+
+function renderPassengerList(
+  elementId,
+  list
+) {
+
+  const element =
+    document.getElementById(elementId);
+
+  if (!list.length) {
+
+    element.innerHTML =
+      `<div class="empty">
+        No one yet.
+       </div>`;
+
+    return;
+
+  }
+
+
+  element.innerHTML =
+    list.map(
+      (entry, index) => `
+
+      <div class="person">
+
+        <div class="serial">
+          ${String(index + 1).padStart(2, "0")}
+        </div>
+
+        <div class="person-main">
+
+          <div class="person-name">
+            ${displayName(entry)}
+          </div>
+
+          <div class="person-meta">
+            Batch ${entry.batch}
+          </div>
+
+        </div>
+
+      </div>
+
+    `
+    ).join("");
+
+}
+
+
+function formatTimestamp(timestamp) {
+
+  if (!timestamp)
+    return "";
+
+  return new Date(timestamp)
+    .toLocaleTimeString(
+      "en-US",
+      {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: "Asia/Dhaka"
+      }
+    );
+
+}
+
+
+function renderStationList(
+  elementId,
+  list,
+  isStation
+) {
+
+  const element =
+    document.getElementById(elementId);
+
+  if (!list.length) {
+
+    element.innerHTML =
+      `<div class="empty">
+        No one yet.
+       </div>`;
+
+    return;
+
+  }
+
+
+  element.innerHTML =
+    list.map(entry => {
+
+      let timing = "";
+
+      if (isStation) {
+
+        timing =
+          "📍 Arrived " +
+          formatTimestamp(
+            entry.arrivedAt
+          );
+
+      } else {
+
+        timing =
+          entry.expectedArrival
+          ? "🕐 Expected " +
+            safeText(entry.expectedArrival)
+          : "🕐 Expected: Not Sure";
+
+      }
+
+
+      const gender =
+        entry.gender === "male"
+          ? "Male"
+          : "Female";
+
+
+      return `
+
+        <div class="status-box">
+
+          <div class="status-name">
+            ${displayName(entry)}
+          </div>
+
+          <div class="status-meta">
+            Batch ${entry.batch}
+            • ${gender}
+          </div>
+
+          <div class="status-meta">
+            ${timing}
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* ================================
+   YOUR TRIP
+================================ */
+
+function renderMyTrip() {
+
+  const card =
+    document.getElementById("yourTripCard");
+
+  const joinButton =
+    document.getElementById("joinButton");
+
+
+  if (!myEntry) {
+
+    card.classList.add("hidden");
+
+    joinButton.classList.remove("hidden");
+
+    return;
+
+  }
+
+
+  joinButton.classList.add("hidden");
+
+  card.classList.remove("hidden");
+
+
+  const gender =
+    myEntry.gender === "male"
+      ? "Male"
+      : "Female";
+
+
+  const statusHTML =
+    myEntry.status === "at_station"
+      ?
+      `<span class="your-status at-station-status">
+        🟢 AT STATION
+       </span>
+       <div class="person-meta">
+        Arrived ${formatTimestamp(myEntry.arrivedAt)}
+       </div>`
+      :
+      `<span class="your-status">
+        🟡 COMING
+       </span>`;
+
+
+  document.getElementById("yourTripInfo").innerHTML = `
+
+    <div class="person-name">
+      ${displayName(myEntry)}
+    </div>
+
+    <div class="person-meta">
+      Batch ${myEntry.batch} • ${gender}
+    </div>
+
+    <div class="person-meta">
+      Expected:
+      ${
+        myEntry.expectedArrival
+        ? safeText(myEntry.expectedArrival)
+        : "Not Sure"
+      }
+    </div>
+
+    ${statusHTML}
+
+  `;
+
+
+  const button =
+    document.getElementById("stationButton");
+
+
+  if (myEntry.status === "at_station") {
+
+    button.textContent =
+      "↩ BACK TO COMING";
+
+    button.style.background =
+      "#64748b";
+
+  } else {
+
+    button.textContent =
+      "📍 I'M AT STATION";
+
+    button.style.background =
+      "#15803d";
+
+  }
+
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+window.selectGender =
+function(gender) {
+
+  selectedGender = gender;
+
+  document
+    .getElementById("maleButton")
+    .classList.toggle(
+      "selected",
+      gender === "male"
+    );
+
+  document
+    .getElementById("femaleButton")
+    .classList.toggle(
+      "selected",
+      gender === "female"
+    );
+
+};
+
+
+window.openJoinModal =
+function() {
+
+  editing = false;
+
+  selectedGender = "";
+
+  document.getElementById("formTitle").textContent =
+    "Join Tomorrow's Trip";
+
+  document.getElementById("formSubmitButton").textContent =
+    "✓ CONFIRM TRIP";
+
+  document.getElementById("nameInput").value = "";
+
+  document.getElementById("batchInput").value = "";
+
+  document.getElementById("arrivalInput").value = "";
+
+  selectGender("");
+
+  document.getElementById("formModal")
+    .classList.remove("hidden");
+
+};
+
+
+window.openEditModal =
+function() {
+
+  if (!myEntry) return;
+
+  editing = true;
+
+  document.getElementById("formTitle").textContent =
+    "Edit Your Trip";
+
+  document.getElementById("formSubmitButton").textContent =
+    "SAVE CHANGES";
+
+  document.getElementById("nameInput").value =
+    myEntry.name || "";
+
+  document.getElementById("batchInput").value =
+    String(myEntry.batch);
+
+  document.getElementById("arrivalInput").value =
+    myEntry.expectedArrival || "";
+
+  selectGender(myEntry.gender);
+
+  document.getElementById("formModal")
+    .classList.remove("hidden");
+
+};
+
+
+window.closeFormModal =
+function() {
+
+  document.getElementById("formModal")
+    .classList.add("hidden");
+
+};
+
+
+/* ================================
+   SAVE
+================================ */
+
+window.saveTrip =
+async function() {
+
+  if (!currentUser)
+    return;
+
+
+  const name =
+    document
+      .getElementById("nameInput")
+      .value
+      .trim();
+
+
+  const batch =
+    Number(
+      document
+        .getElementById("batchInput")
+        .value
+    );
+
+
+  const expectedArrival =
+    document
+      .getElementById("arrivalInput")
+      .value;
+
+
+  if (
+    ![9,10,11,12,13]
+      .includes(batch)
+  ) {
+
+    alert("Please select your batch.");
+
+    return;
+
+  }
+
+
+  if (
+    selectedGender !== "male" &&
+    selectedGender !== "female"
+  ) {
+
+    alert("Please select Male or Female.");
+
+    return;
+
+  }
+
+
+  const entryRef =
+    ref(
+      db,
+      "trips/" +
+      currentTripId +
+      "/" +
+      currentUser.uid
+    );
+
+
+  const data = {
+
+    name: name,
+
+    batch: batch,
+
+    gender: selectedGender,
+
+    expectedArrival:
+      expectedArrival,
+
+    status:
+      editing && myEntry
+        ? myEntry.status
+        : "coming",
+
+    arrivedAt:
+      editing && myEntry
+        ? (myEntry.arrivedAt || null)
+        : null,
+
+    createdAt:
+      editing && myEntry
+        ? myEntry.createdAt
+        : Date.now(),
+
+    updatedAt:
+      Date.now()
+
+  };
+
+
+  try {
+
+    await set(
+      entryRef,
+      data
+    );
+
+    closeFormModal();
+
+  } catch(error) {
+
+    console.error(error);
+
+    alert(
+      "Could not save your trip. Please try again."
+    );
+
+  }
+
+};
+
+
+/* ================================
+   STATION STATUS
+================================ */
+
+window.toggleStationStatus =
+async function() {
+
+  if (!myEntry || !currentUser)
+    return;
+
+
+  const entryRef =
+    ref(
+      db,
+      "trips/" +
+      currentTripId +
+      "/" +
+      currentUser.uid
+    );
+
+
+  const goingToStation =
+    myEntry.status !== "at_station";
+
+
+  const updated = {
+
+    ...myEntry,
+
+    status:
+      goingToStation
+        ? "at_station"
+        : "coming",
+
+    arrivedAt:
+      goingToStation
+        ? Date.now()
+        : null,
+
+    updatedAt:
+      Date.now()
+
+  };
+
+
+  try {
+
+    await set(
+      entryRef,
+      updated
+    );
+
+  } catch(error) {
+
+    console.error(error);
+
+    alert(
+      "Could not update your status."
+    );
+
+  }
+
+};
+
+
+/* ================================
+   CANCEL
+================================ */
+
+window.openCancelModal =
+function() {
+
+  document.getElementById("cancelModal")
+    .classList.remove("hidden");
+
+};
+
+
+window.closeCancelModal =
+function() {
+
+  document.getElementById("cancelModal")
+    .classList.add("hidden");
+
+};
+
+
+window.confirmCancel =
+async function() {
+
+  if (!currentUser)
+    return;
+
+
+  try {
+
+    await remove(
+      ref(
+        db,
+        "trips/" +
+        currentTripId +
+        "/" +
+        currentUser.uid
+      )
+    );
+
+    closeCancelModal();
+
+  } catch(error) {
+
+    console.error(error);
+
+    alert(
+      "Could not cancel your trip."
+    );
+
+  }
+
+};
+
+</script>
+
+</body>
+</html>
